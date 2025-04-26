@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Enable CORS for frontend
   app.enableCors({
-    origin: 'http://localhost:8080',
+    origin: ['http://localhost:8080', 'https://thisara-salon.netlify.app/'],
     credentials: true,
   });
 
