@@ -34,13 +34,14 @@ export class EmailService {
     });
   }
 
-  async sendWithAttachment(email: string, subject: string, message: string, attachments: Array<{filename: string, path: string}>): Promise<any> {
+  async sendWithAttachment(email: string, subject: string, message: string, attachments: Array<{filename: string, path: string}>, replyToAddress?: string): Promise<any> {
     return this.transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: email,
       subject,
       html: message,
       attachments,
+      replyTo: replyToAddress || undefined,
     });
   }
 
