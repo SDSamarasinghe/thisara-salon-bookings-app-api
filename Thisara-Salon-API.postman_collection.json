@@ -1,0 +1,209 @@
+{
+  "info": {
+    "_postman_id": "b1b7e6c2-0f6c-4e9a-8c5e-collection-demo-id",
+    "name": "Thisara Salon API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for Thisara Salon Bookings App Backend (localhost:4001)"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/auth/register-admin",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["auth", "register-admin"]
+            }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/auth/login-admin",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["auth", "login-admin"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Add Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sample Product\",\n  \"price\": 100\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["products"]
+            }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Product\",\n  \"price\": 200\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/products/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["products", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4001/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["products"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "http://localhost:4001/products/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["products", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Services",
+      "item": [
+        {
+          "name": "Add Service",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sample Service\",\n  \"price\": 100\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/services",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["services"]
+            }
+          }
+        },
+        {
+          "name": "Get All Services",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:4001/services",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["services"]
+            }
+          }
+        },
+        {
+          "name": "Update Service",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Service\",\n  \"price\": 200\n}"
+            },
+            "url": {
+              "raw": "http://localhost:4001/services/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["services", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Delete Service",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "url": {
+              "raw": "http://localhost:4001/services/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4001",
+              "path": ["services", ":id"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
