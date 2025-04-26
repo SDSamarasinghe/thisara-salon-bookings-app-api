@@ -6,12 +6,11 @@ import {
   Patch,
   Delete,
   Param,
-  G,
-  e,
-  t,
+  Get,
 } from '@nestjs/common';
 import { Roles } from '../auth/roles.decorator';
 import { RolesGuard } from '../auth/roles.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 
@@ -21,14 +20,14 @@ export class ProductsController {
 
   @Post()
   @Roles('admin')
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard)
   async addProduct(@Body() createProductDto: CreateProductDto) {
     return this.productsService.createProduct(createProductDto);
   }
 
   @Patch(':id')
   @Roles('admin')
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   async updateProduct(
     @Param('id') id: string,
     @Body() updateDto: Partial<CreateProductDto>,
@@ -43,7 +42,7 @@ export class ProductsController {
 
   @Delete(':id')
   @Roles('admin')
-  @UseGuards(RolesGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   async deleteProduct(@Param('id') id: string) {
     return this.productsService.deleteProduct(id);
   }

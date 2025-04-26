@@ -19,7 +19,15 @@ export class ServicesService {
     return this.productModel.findByIdAndDelete(id);
   }
 
-  async getAllServices(): Promise<any[]> {
+  async updateService(id: string, updateDto: Partial<CreateServiceDto>): Promise<Product | null> {
+    return this.productModel.findByIdAndUpdate(id, updateDto, { new: true });
+  }
+
+  async deleteService(id: string): Promise<Product | null> {
+    return this.productModel.findByIdAndDelete(id);
+  }
+
+  async getAllServices(): Promise<Product[]> {
     return this.productModel.find().exec();
   }
 }
