@@ -1,36 +1,32 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Product, ProductDocument } from './product.schema';
+import { Services, ServicesDocument } from './services.schema';
 import { CreateServiceDto } from './dto/create-product.dto';
 
 @Injectable()
 export class ServicesService {
   constructor(
-    @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+    @InjectModel(Services.name) private servicesModel: Model<ServicesDocument>,
   ) {}
 
-  async createProduct(createServiceDto: CreateServiceDto): Promise<Product> {
-    const createdProduct = new this.productModel(createServiceDto);
-    return createdProduct.save();
+  async createService(createServiceDto: CreateServiceDto): Promise<Services> {
+    const createdService = new this.servicesModel(createServiceDto);
+    return createdService.save();
   }
 
-  async deleteProduct(id: string): Promise<any> {
-    return this.productModel.findByIdAndDelete(id);
+  async deleteService(id: string): Promise<Services | null> {
+    return this.servicesModel.findByIdAndDelete(id);
   }
 
   async updateService(
     id: string,
     updateDto: Partial<CreateServiceDto>,
-  ): Promise<Product | null> {
-    return this.productModel.findByIdAndUpdate(id, updateDto, { new: true });
+  ): Promise<Services | null> {
+    return this.servicesModel.findByIdAndUpdate(id, updateDto, { new: true });
   }
 
-  async deleteService(id: string): Promise<Product | null> {
-    return this.productModel.findByIdAndDelete(id);
-  }
-
-  async getAllServices(): Promise<Product[]> {
-    return this.productModel.find().exec();
+  async getAllServices(): Promise<Services[]> {
+    return this.servicesModel.find().exec();
   }
 }

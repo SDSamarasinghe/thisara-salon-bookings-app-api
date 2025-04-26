@@ -13,7 +13,7 @@ export class ServicesController {
   @Roles('admin')
   @UseGuards(JwtAuthGuard, RolesGuard)
   async addService(@Body() createServiceDto: CreateServiceDto) {
-    return this.servicesService.createProduct(createServiceDto);
+    return this.servicesService.createService(createServiceDto);
   }
 
   @Get()
