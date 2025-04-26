@@ -6,6 +6,15 @@ export class CreateServiceDto {
   @IsString()
   name: string;
 
+  @ApiProperty({ example: '1 hour' })
+  @IsString()
+  duration: string;
+
+  @ApiProperty({ example: 'https://images.unsplash.com/photo-1560066984-138dadb4c035', required: false })
+  @IsString()
+  @IsOptional()
+  image?: string;
+
   @ApiProperty({ example: 20 })
   @IsNumber()
   @Min(0)
