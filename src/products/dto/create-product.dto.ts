@@ -6,10 +6,15 @@ export class CreateProductDto {
   @IsString()
   name: string;
 
-  @ApiProperty({ example: 15 })
+  @ApiProperty({ example: 20 })
   @IsNumber()
   @Min(0)
   price: number;
+
+  @ApiProperty({ example: 'https://images.unsplash.com/photo-1560066984-138dadb4c035', required: false })
+  @IsString()
+  @IsOptional()
+  image?: string;
 
   @ApiProperty({ example: 'Cleans and nourishes hair', required: false })
   @IsString()

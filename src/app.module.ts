@@ -8,6 +8,9 @@ import { ServicesModule } from './services/services.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { AuthModule } from './auth/auth.module';
 import { ProductsModule } from './products/products.module';
+import { SubscriptionsModule } from './subscriptions/subscriptions.module';
+import { EmailModule } from './email/email.module';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { ProductsModule } from './products/products.module';
     ProductsModule,
     BookingsModule,
     AuthModule,
+    SubscriptionsModule,
+    EmailModule,
+    ContactModule,
   ],
   controllers: [AppController],
   providers: [AppService],
