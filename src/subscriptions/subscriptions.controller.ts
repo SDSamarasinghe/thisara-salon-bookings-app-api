@@ -13,8 +13,12 @@ export class SubscriptionsController {
   ) {}
 
   @Post()
-  async subscribe(@Body('email') email: string) {
-    return this.subscriptionsService.subscribe(email);
+  async subscribe(@Body('email') email: string, @Res() res) {
+    const result = await this.subscriptionsService.subscribe(email);
+    if ('message' in result && result.message === "This email is already subscribed.") {
+      return res.status(409).json(result);
+    }
+    return res.status(201).json(result);
   }
 
   @Post('send-bulk')
